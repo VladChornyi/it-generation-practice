@@ -1,4 +1,7 @@
-import { Children } from "react"
+// import { Children } from "react"
+import PropTypes from 'prop-types';
+
+
 import PostItem from "../PostItem/PostItem"
 
 export default function PostList({ posts }) {
@@ -12,4 +15,13 @@ export default function PostList({ posts }) {
 			</ul>
 		</>
 	)
+}
+
+PostList.propTypes = {
+	posts: PropTypes.arrayOf(PropTypes.shape({
+		image: PropTypes.string.isRequired,
+		title: PropTypes.string.isRequired,
+		text: PropTypes.string.isRequired,
+		id: PropTypes.string.isRequired,
+	  }))
 }
