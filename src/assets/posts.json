@@ -1,0 +1,32 @@
+[
+  {
+    "image": "https://picsum.photos/200/300?grayscale",
+    "title": "HTML",
+"text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam laudantium facilis quae quo delectus aut iste neque sequi error doloremque autem minus obcaecati, assumenda ratione exercitationem eveniet molestiae labore incidunt?",
+    "id": "1843"
+  },
+  {
+    "image": "https://www.flaticon.com/svg/static/icons/svg/1998/1998671.svg",
+    "title": "CSS",
+    "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam laudantium facilis quae quo delectus aut iste neque sequi error doloremque autem minus obcaecati, assumenda ratione exercitationem eveniet molestiae labore incidunt?",
+    "id": "1812"
+  },
+  {
+    "image": "https://www.flaticon.com/svg/static/icons/svg/1623/1623681.svg",
+    "title": "JS",
+    "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam laudantium facilis quae quo delectus aut iste neque sequi error doloremque autem minus obcaecati, assumenda ratione exercitationem eveniet molestiae labore incidunt?",
+    "id": "1213"
+  },
+  {
+    "image": "https://www.flaticon.com/svg/static/icons/svg/2977/2977285.svg",
+    "title": "React",
+    "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam laudantium facilis quae quo delectus aut iste neque sequi error doloremque autem minus obcaecati, assumenda ratione exercitationem eveniet molestiae labore incidunt?",
+    "id": "1714"
+  },
+  {
+    "image": "https://www.flaticon.com/svg/static/icons/svg/1998/1998749.svg",
+    "title": "Node",
+   "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam laudantium facilis quae quo delectus aut iste neque sequi error doloremque autem minus obcaecati, assumenda ratione exercitationem eveniet molestiae labore incidunt?",
+    "id": "1284"
+  }
+]
