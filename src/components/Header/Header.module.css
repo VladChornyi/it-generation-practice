@@ -1,0 +1,15 @@
+.headerNav {
+  background-color: teal;
+}
+.headerList {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+  padding: 20px;
+}
+.navItem {
+  color: Blue;
+}
+.navItem:hover {
+  color: orange;
+}
