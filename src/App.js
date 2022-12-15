@@ -5,6 +5,7 @@ import Header from "./components/Header/Header";
 import headerData from "./assets/nav.json";
 import Container from "./components/Container/Container";
 import AccordionItem from "./components/AccordionItem/AccordionItem";
+import FAQ from './components/FAQ/FAQ';
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
       <Section title="Posts">
         <PostList posts={postsData} />
       </Section> */}
-      <AccordionItem />
+      <FAQ />
     </>
   );
 }
