@@ -4,12 +4,13 @@ import Section from "./components/Section/Section";
 import Header from "./components/Header/Header";
 import headerData from "./assets/nav.json";
 import Container from "./components/Container/Container";
+import AccordionItem from "./components/AccordionItem/AccordionItem";
 
 function App() {
   return (
     <>
       <Header headerData={headerData} />
-      <Section title="title">
+      {/* <Section title="title">
         <h2
           className="header-title"
           style={{ fontSize: "24px", color: "tomato", textAlign: "center" }}>
@@ -18,7 +19,8 @@ function App() {
       </Section>
       <Section title="Posts">
         <PostList posts={postsData} />
-      </Section>
+      </Section> */}
+      <AccordionItem />
     </>
   );
 }
