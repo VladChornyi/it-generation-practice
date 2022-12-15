@@ -12,11 +12,26 @@ export class AccordionItem extends Component {
     });
   };
 
-  render() {
-   if(this.state.expanded !== this.props.isAllOpen) 
-   {this.setState({expanded: this.props.isAllOpen})}
+  componentDidUpdate() {
+    console.log(this.props.buttonPushed);
+    if (!this.props.buttonPushed) {
+      return;
+    }
+    if (this.props.isAllOpen){
+      this.setState({
+        expanded: true,
+      });
+      this.props.onTriggerButton()
+    }
+    if (!this.props.isAllOpen){
+      this.setState({
+        expanded: false,
+      });
+      this.props.onTriggerButton()
+    }
+  }
 
-  
+  render() {
     return (
       <div className={style.container} onClick={this.onClickEventHandler}>
         <div className={style.accordion}>
