@@ -7,7 +7,6 @@ export class AccordionItem extends Component {
   };
 
   onClickEventHandler = (event) => {
-    console.log(event.currentTarget, event.target);
     this.setState((prevState) => {
       return { expanded: !prevState.expanded };
     });
@@ -20,14 +19,14 @@ export class AccordionItem extends Component {
           <div className={style.accordionItem}>
             <p
               className={`${style.title} ${
-                this.state.expanded ? style.isExpanded : ""
+                (this.state.expanded) ? style.isExpanded : ""
               }`}
             >
               First Question
             </p>
             <div
               className={`${style.content} ${
-                this.state.expanded ? style.isExpanded : ""
+                (this.state.expanded) ? style.isExpanded : ""
               }`}
             >
               <p>
