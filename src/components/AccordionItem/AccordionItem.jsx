@@ -19,14 +19,14 @@ export class AccordionItem extends Component {
           <div className={style.accordionItem}>
             <p
               className={`${style.title} ${
-                (this.state.expanded) ? style.isExpanded : ""
+                (this.state.expanded || this.props.isAllOpen) ? style.isExpanded : ""
               }`}
             >
               First Question
             </p>
             <div
               className={`${style.content} ${
-                (this.state.expanded) ? style.isExpanded : ""
+                (this.state.expanded || this.props.isAllOpen) ? style.isExpanded : ""
               }`}
             >
               <p>

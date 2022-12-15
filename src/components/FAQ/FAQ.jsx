@@ -3,9 +3,18 @@ import AccordionItem from '../AccordionItem/AccordionItem';
 import style from './FAQ.module.css'
 export class FAQ extends Component {
   state = {
-    isAllOpen: false
+    isAllOpen: true
   };
-
+  onOpenAll = () =>{
+    this.setState({
+      isAllOpen: true
+    })
+  }
+  onCloseAll = () =>{
+    this.setState({
+      isAllOpen: false
+    })
+  }
   render() {
   return (
     <div className={style.accordion}>
