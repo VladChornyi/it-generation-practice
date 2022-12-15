@@ -3,7 +3,7 @@ import AccordionItem from '../AccordionItem/AccordionItem';
 import style from './FAQ.module.css'
 export class FAQ extends Component {
   state = {
-    isAllOpen: true
+    isAllOpen: false
   };
   onOpenAll = () =>{
     this.setState({
@@ -19,14 +19,15 @@ export class FAQ extends Component {
   return (
     <div className={style.accordion}>
       <h1>FAQ</h1>
-      <button type="button" className={style.btn} id="expand-all">
+      <button type="button" className={style.btn} id="expand-all" onClick={this.onOpenAll}>
         Expand All
       </button>
-      <button type="button" className={style.btn} id="collapse-all">
+      <button type="button" className={style.btn} id="collapse-all"onClick={this.onCloseAll}>
         Collapse All
       </button>
       <ul className={style.FAQList}>
-        <li className={style.FAQItem}><AccordionItem isAllOpen={this.state.isAllOpen} /></li>
+     <li className={style.FAQItem}><AccordionItem isAllOpen={this.state.isAllOpen} /></li>
+
         <li className={style.FAQItem}><AccordionItem isAllOpen={this.state.isAllOpen} /></li>
         <li className={style.FAQItem}><AccordionItem isAllOpen={this.state.isAllOpen} /></li>
         <li className={style.FAQItem}><AccordionItem isAllOpen={this.state.isAllOpen} /></li>

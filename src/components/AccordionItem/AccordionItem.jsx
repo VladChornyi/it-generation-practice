@@ -13,20 +13,24 @@ export class AccordionItem extends Component {
   };
 
   render() {
+   if(this.state.expanded !== this.props.isAllOpen) 
+   {this.setState({expanded: this.props.isAllOpen})}
+
+  
     return (
       <div className={style.container} onClick={this.onClickEventHandler}>
         <div className={style.accordion}>
           <div className={style.accordionItem}>
             <p
               className={`${style.title} ${
-                (this.state.expanded || this.props.isAllOpen) ? style.isExpanded : ""
+                this.state.expanded ? style.isExpanded : ""
               }`}
             >
               First Question
             </p>
             <div
               className={`${style.content} ${
-                (this.state.expanded || this.props.isAllOpen) ? style.isExpanded : ""
+                this.state.expanded ? style.isExpanded : ""
               }`}
             >
               <p>
