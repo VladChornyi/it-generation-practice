@@ -1,16 +1,30 @@
-import styles from './GoodsList.module.css'
-import GoodsListItem from './GoodsListItem'
+import styles from "./GoodsList.module.css";
+import GoodsListItem from "./GoodsListItem";
+import { Component } from "react";
 
-export default function GoodsList ({goods}) {
+export default class GoodsList extends Component {
+  state = {
+    activeElement: "id",
+  };
+
+  onClickChange = (event) => {
+    this.setState({ activeElement: event.currentTarget.id });
+  };
+
+  render() {
     return (
-        <ul className={styles.list}>
-            {goods.map(({name, description, id}) => (           
-                 <GoodsListItem
-                key={id}
-                name={name}
-                description={description}
-            />
-            ))}
-        </ul>
-    )
+      <ul className={styles.list}>
+        {this.props.goods.map(({ name, description, id }) => (
+          <GoodsListItem
+            id={id}
+            onClickChange={this.onClickChange}
+            activeElement={this.state.activeElement}
+            key={id}
+            name={name}
+            description={description}
+          />
+        ))}
+      </ul>
+    );
+  }
 }
