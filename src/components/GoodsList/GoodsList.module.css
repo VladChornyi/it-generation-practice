@@ -1,0 +1,28 @@
+.list {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    align-items: center;
+    justify-content: center;
+}
+
+.item {
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+.textName {
+font-size: large;
+font-weight: 400;
+}
+
+.textDesc {
+    font-size: large;
+    font-weight: 400;
+}
+
+.boldText {
+    font-weight: bold;
+}
