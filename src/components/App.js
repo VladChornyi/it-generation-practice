@@ -8,6 +8,7 @@ import Container from "./Container/Container";
 import AccordionItem from "./AccordionItem/AccordionItem";
 import FAQ from './FAQ/FAQ';
 import GoodsList from './GoodsList/GoodsList';
+import Products from "./Products/Products";
  
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
       goods={goods}
       />
       </Container>
+      <Products />
     </>
   );
 }
