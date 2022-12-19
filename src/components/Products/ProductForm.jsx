@@ -1,3 +1,4 @@
+import { nanoid } from "nanoid";
 import React, { Component } from "react";
 
 export default class ProductForm extends Component {
@@ -13,10 +14,23 @@ export default class ProductForm extends Component {
     });
   };
 
+  handleAddProduct = (e) => {
+    const { name, quantity, price} = this.state;
+    e.preventDefault();
+    const newProduct = {
+      name,
+      quantity,
+      price,
+      id: nanoid(),
+
+    }
+    this.props.onSubmit(newProduct);
+  }
+
   render() {
     const { name, quantity, price } = this.state;
     return (
-      <form action="">
+      <form onSubmit={this.handleAddProduct}>
         <label htmlFor="">
           <span>Name</span>
           <input
