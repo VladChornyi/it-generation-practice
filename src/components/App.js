@@ -31,7 +31,9 @@ function App() {
       goods={goods}
       />
       </Container>
+      <Container>
       <Products />
+      </Container>
     </>
   );
 }

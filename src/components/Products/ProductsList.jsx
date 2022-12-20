@@ -1,11 +1,36 @@
 import React from "react";
+import ProductsItem from "./ProductsItem";
 
-export default function ProductsList({}) {
+export default function ProductsList({products}) {
+const getQuantity = () => {
+return products.reduce((acc, product) => {
+    return acc + Number(product.quantity);
+  }, 0);
+}
+
+const getTotalPrice = () => {
+  return products.reduce((acc, product) => {
+    return acc + (product.price*product.quantity);
+  }, 0);
+
+}
+
   return (
-    <div>
-      <p>Name:</p>
-      <p>Quantity:</p>
-      <p>Price</p>
-    </div>
+    <>
+    <ul>
+      {products.map((item) => (
+        <ProductsItem 
+        key={item.id}
+        name={item.name}
+        quantity={item.quantity}
+        price={item.price}
+         />
+      ))}
+    </ul>
+   <ul>
+    <li>Total quantity:{getQuantity()}</li>
+    <li>Total price:{getTotalPrice()}</li>
+   </ul>
+    </>
   );
 }

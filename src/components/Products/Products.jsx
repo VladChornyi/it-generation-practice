@@ -9,8 +9,24 @@ export default class Products extends Component {
   };
 
   onSubmit = (newProduct) => {
-
     this.setState((prevState) => {
+      if (
+        prevState.products.some((product) => {
+          return product.name === newProduct.name;
+        })
+      ) {
+        return prevState.products.map((product) => {
+          if (product.name === newProduct.name) {
+            console.log(product, newProduct);
+            product.quantity =
+              Number(product.quantity) + Number(newProduct.quantity);
+            product.price = newProduct.price;
+            return product;
+          }
+          return product;
+        });
+      }
+
       return { products: [...prevState.products, newProduct] };
     });
   };
@@ -18,9 +34,8 @@ export default class Products extends Component {
   render() {
     return (
       <div>
-        <ProductForm onSubmit={this.onSubmit}/>
-        <ProductsList />
-        <ul>{this.state.products.map(item=>(<li key={item.name}>{item.name}</li>))}</ul>
+        <ProductForm onSubmit={this.onSubmit} />
+        <ProductsList products={this.state.products} />
       </div>
     );
   }
