@@ -15,17 +15,17 @@ export default class ProductForm extends Component {
   };
 
   handleAddProduct = (e) => {
-    const { name, quantity, price} = this.state;
+    const { name, quantity, price } = this.state;
     e.preventDefault();
     const newProduct = {
       name,
       quantity,
       price,
       id: nanoid(),
-
-    }
+    };
     this.props.onSubmit(newProduct);
-  }
+    this.setState({ name: "", quantity: "", price: "" });
+  };
 
   render() {
     const { name, quantity, price } = this.state;

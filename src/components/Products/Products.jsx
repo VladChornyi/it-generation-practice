@@ -19,8 +19,8 @@ export default class Products extends Component {
     return (
       <div>
         <ProductForm onSubmit={this.onSubmit}/>
-        <ProductsList />
-        <ul>{this.state.products.map(item=>(<li key={item.name}>{item.name}</li>))}</ul>
+        <ProductsList products={this.state.products}/>
+       
       </div>
     );
   }
