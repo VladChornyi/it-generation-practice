@@ -6,10 +6,10 @@ import Header from "./Header/Header";
 import headerData from "../assets/nav.json";
 import Container from "./Container/Container";
 import AccordionItem from "./AccordionItem/AccordionItem";
-import FAQ from './FAQ/FAQ';
-import GoodsList from './GoodsList/GoodsList';
+import FAQ from "./FAQ/FAQ";
+import GoodsList from "./GoodsList/GoodsList";
 import Products from "./Products/Products";
- 
+import Albums from "./Albums/Albums";
 
 function App() {
   return (
@@ -25,7 +25,7 @@ function App() {
       <Section title="Posts">
         <PostList posts={postsData} />
       </Section> */}
-      <FAQ />
+      {/* <FAQ />
       <Container>
       <GoodsList
       goods={goods}
@@ -33,7 +33,8 @@ function App() {
       </Container>
       <Container>
       <Products />
-      </Container>
+      </Container> */}
+      <Albums />
     </>
   );
 }
