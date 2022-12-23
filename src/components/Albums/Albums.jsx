@@ -1,61 +1,57 @@
-import React, { Component } from "react";
 import PropTypes from "prop-types";
 import fetchAlbum from "../services/api";
 import Pagination from "./Pagination/Pagination";
 import Loader from "../Loader/Loader";
+import { useEffect, useState } from "react";
 
-class Albums extends Component {
-  state = {
-    dataAlbum: [],
-    isLoad: true,
-    error: "",
-    pageNum: 1,
-    perPage: 10,
-  };
+const Albums = () => {
+  const [dataAlbum, setDataAlbum] = useState([]);
+  const [isLoad, setIsLoad] = useState(true);
+  const [error, setError] = useState("");
+  const [pageNum, setPageNum] = useState(1);
+  const [perPage, setPerPage] = useState(10);
 
-  async componentDidMount() {
-    this.setState({
-      dataAlbum: await fetchAlbum(),
-      isLoad: false,
+  //useEffect(() => {
+  //  const getDataAlbum = async () => {
+  //    setDataAlbum(await fetchAlbum());
+  //    setIsLoad(false);
+  //  };
+  //  getDataAlbum();
+  //}, []);
+
+  useEffect(() => {
+    fetchAlbum().then((data) => {
+      setDataAlbum(data);
+      setIsLoad(false);
     });
-  }
-  albumsToRender = () => {
-    const { perPage, dataAlbum, pageNum } = this.state;
+  }, []);
+
+  const albumsToRender = () => {
     return dataAlbum.slice(pageNum * perPage - perPage, pageNum * perPage);
   };
 
-  setPageNum = (pageNum) => {
-    this.setState({
-      pageNum: pageNum,
-    });
+  const newPageNum = (pageNum) => {
+    setPageNum(pageNum);
   };
 
-  render() {
-    const pageQtt = Math.ceil(
-      this.state.dataAlbum.length / Number(this.state.perPage)
-    );
-    return (
-      <>
-        {this.state.isLoad && <Loader size={50} wrapperClass="dna-wrapper" />}
-        <ul>
-          {this.albumsToRender().map(({ userId, id, title }) => (
-            <li key={id}>
-              <p>
-                <b>{id}</b>
-                {title}
-              </p>
-            </li>
-          ))}
-        </ul>
-        <Pagination
-          pageQtt={pageQtt}
-          pageNum={this.state.pageNum}
-          setPageNum={this.setPageNum}
-        />
-      </>
-    );
-  }
-}
+  const pageQtt = Math.ceil(dataAlbum.length / Number(perPage));
+  return (
+    <>
+      {isLoad && <Loader size={50} wrapperClass="dna-wrapper" />}
+      <ul>
+        {albumsToRender().map(({ userId, id, title }) => (
+          <li key={id}>
+            <p>
+              <b>{id}</b>
+              {title}
+            </p>
+          </li>
+        ))}
+      </ul>
+      <Pagination pageQtt={pageQtt} pageNum={pageNum} setPageNum={setPageNum} />
+    </>
+  );
+};
 
 Albums.propTypes = {};
 
