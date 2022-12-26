@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react';
 
 import {fetchStarWarsCharacter} from '../services/api';
 import {Form} from './Form';
-import {Characters} from './Characters';
+import Characters from './Characters';
 
 export const StarWars = () => {
   const [characters, setCharacters] = useState([]);
