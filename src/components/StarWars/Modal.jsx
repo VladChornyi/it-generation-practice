@@ -1,40 +1,39 @@
-import { Component } from "react";
+import { useEffect } from "react";
 import s from "./Modal.module.css";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 
-export default class Modal extends Component {
+export const Modal = ({ children, onClickCloseModal }) => {
+  useEffect(() => {
+    window.addEventListener("keydown", onEscPress);
+    return () => window.removeEventListener("keydown", onEscPress);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  componentDidMount() {
-    window.addEventListener('keydown', this.onEscPress)
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('keydown', this.onEscPress)
-  }
-
-  onEscPress = (e) => {
-    if (e.code !== 'Escape') {
-      return
+  const onEscPress = (e) => {
+    if (e.code !== "Escape") {
+      return;
     }
-    this.props.onClickCloseModal()
-  }
+    onClickCloseModal();
+  };
 
-  onClickBackdrop = (e) => {
+  const onClickBackdrop = (e) => {
     if (e.target === e.currentTarget) {
-      this.props.onClickCloseModal()
+      onClickCloseModal();
     }
-  }
+  };
 
-  render() {
-    return (
-      <div className={s.backdrop} onClick={this.onClickBackdrop}>
-        <div className={s.modal}>
-          <button type="button" className={s.closeBtn} onClick={this.props.onClickToggleModal}>
-            <AiOutlineCloseCircle size={32} />
-          </button>
-          {this.props.children}
-        </div>
+  return (
+    <div className={s.backdrop} onClick={onClickBackdrop}>
+      <div className={s.modal}>
+        <button
+          type="button"
+          className={s.closeBtn}
+          onClick={onClickCloseModal}
+        >
+          <AiOutlineCloseCircle size={32} />
+        </button>
+        {children}
       </div>
-    );
-  }
-}
+    </div>
+  );
+};

@@ -1,48 +1,44 @@
-import { Component } from 'react';
-import Modal from './Modal';
-import UserInfo from './UserInfo';
+import { useState } from "react";
+import { Modal } from "./Modal";
+import UserInfo from "./UserInfo";
 
-export default class Characters extends Component {
-  state = {
-    isModalOpen: false,
-    currentId: null,
-  }
+export const Characters = ({ users }) => {
+  const [currentId, setCurrentId] = useState(null);
 
-  onClickOpenModal = (e) => {
-    const currentId = e.currentTarget.dataset.id
-    this.setState(({isModalOpen}) => ({
-      isModalOpen: !isModalOpen,
-      currentId,
-    }))
-  }
-
-  onClickCloseModal = (e) => {
-    this.setState({
-      isModalOpen: false
-    })
-  }
-
-  render() {
-    const currentItem = this.props.users.find(user => user.id === this.state.currentId)
-    return (
-      <>
-      <ul>
-      {this.props.users.map((item) => {
-        return (
-          <li key={item.name}>
-            <p>{item.name}</p>
-            <p>{item.gender}</p>
-            <button type="button" data-id={item.id} onClick={this.onClickOpenModal}>Read more</button>
-          </li>
-        );
-      })}
-    </ul>
-    {this.state.isModalOpen && (
-      <Modal onClickCloseModal={this.onClickCloseModal}>
-        <UserInfo item={currentItem}/>
-      </Modal>
-    )}
-    </>
-    );
+  const onClickOpenModal = (e) => {
+    const id = e.currentTarget.dataset.id;
+    setCurrentId(id);
   };
+
+  const onClickCloseModal = (e) => {
+    setCurrentId(null);
+  };
+
+  const currentItem = users.find((user) => user.name === currentId);
+  return (
+    <>
+      <ul>
+        {users.map((item) => {
+          return (
+            <li key={item.name}>
+              <p>{item.name}</p>
+              <p>{item.gender}</p>
+              <button
+                type="button"
+                data-id={item.name}
+                onClick={onClickOpenModal}
+              >
+                Read more
+              </button>
+            </li>
+          );
+        })}
+      </ul>
+      {currentId && (
+        <Modal onClickCloseModal={onClickCloseModal}>
+          <UserInfo item={currentItem} />
+        </Modal>
+      )}
+    </>
+  );
 };
