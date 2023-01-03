@@ -10,11 +10,21 @@ import FAQ from "./FAQ/FAQ";
 import GoodsList from "./GoodsList/GoodsList";
 import Products from "./Products/Products";
 import Albums from "./Albums/Albums";
+import { Formik } from "formik";
+import FormFormik from "./FormFormik/FormFormik";
+import { useState } from "react";
+import { nanoid } from "nanoid";
 
 function App() {
+  const [users, setUsers] = useState([]);
+
+  const addUser = (obj) => {
+    setUsers((prevState) => [...prevState, { ...obj, id: nanoid() }]);
+  };
   return (
     <>
-      <Header headerData={headerData} />
+      <FormFormik addUser={addUser} />
+      {/* <Header headerData={headerData} /> */}
       {/* <Section title="title">
         <h2
           className="header-title"
@@ -34,7 +44,7 @@ function App() {
       <Container>
       <Products />
       </Container> */}
-      <Albums />
+      {/* <Albums /> */}
     </>
   );
 }
