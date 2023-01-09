@@ -1,18 +1,15 @@
 import styles from "./Header.module.css";
 import Container from "../Container/Container";
+import { NavLink } from "react-router-dom";
 
-const Header = ({ headerData }) => {
+const Header = () => {
   return (
     <header className={styles.headerNav}>
       <Container>
         <nav className={styles.navigation}>
-          <ul className={styles.headerList}>
-            {headerData.map(({ src }) => (
-              <li className={styles.navItem} key={src}>
-                {src}
-              </li>
-            ))}
-          </ul>
+          <NavLink to="/">Home </NavLink>
+          <NavLink to="exercises
+">Exercises </NavLink>
         </nav>
       </Container>
     </header>
