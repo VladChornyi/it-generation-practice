@@ -23,31 +23,17 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
-          <Route path="exercises" element={<ExercisesPage />} />
+          <Route path="/exercises" element={<ExercisesPage />}>
+            <Route index element={<PostList posts={postsData} />} />
+            <Route path="posts" element={<PostList posts={postsData} />} />
+            <Route path="products" element={<Products />} />
+            <Route path="albums" element={<Albums />} />
+            <Route path="starWars" element={<StarWars />} />
+            <Route path="goodsList" element={<GoodsList goods={goods} />} />
+            <Route path="FAQ" element={<FAQ />} />
+          </Route>
         </Route>
       </Routes>
-
-      {/* <Section title="title">
-        <h2
-          className="header-title"
-          style={{ fontSize: "24px", color: "tomato", textAlign: "center" }}>
-          "Котик на дієті - сумний котик" {true}
-        </h2>
-      </Section>
-      <Section title="Posts">
-        <PostList posts={postsData} />
-      </Section> */}
-      {/* <FAQ />
-      <Container>
-      <GoodsList
-      goods={goods}
-      />
-      </Container>
-      <Container>
-      <Products />
-      </Container> */}
-      {/* <Albums /> */}
-      {/* <StarWars /> */}
     </>
   );
 }
