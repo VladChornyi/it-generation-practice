@@ -17,7 +17,6 @@ import Layout from "./Layout/Layout";
 import ExercisesPage from "../pages/ExercisesPage/ExercisesPage";
 
 function App() {
-  console.log(headerData);
   return (
     <>
       <Routes>

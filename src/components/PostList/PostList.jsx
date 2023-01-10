@@ -1,27 +1,24 @@
 // import { Children } from "react"
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 import {
   WrapperPostList,
   Title,
   PostListStyled,
   Button,
-} from './PostList.styled';
+} from "./PostList.styled";
 
-import PostItem from '../PostItem/PostItem';
+import PostItem from "../PostItem/PostItem";
+import Goback from "../Goback/Goback";
 
-export default function PostList({posts}) {
+export default function PostList({ posts }) {
   return (
     <WrapperPostList bg="#34e7e4" fontSize="24px">
       <Title>Post List</Title>
+      <Goback />
       <PostListStyled>
-        {posts.map(({image, title, text, id}) => (
-          <PostItem
-            key={id}
-            image={image}
-            title={title}
-            text={text}
-          />
+        {posts.map(({ image, title, text, id }) => (
+          <PostItem key={id} image={image} title={title} text={text} />
         ))}
       </PostListStyled>
       <Button>Click me!</Button>

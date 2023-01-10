@@ -3,6 +3,7 @@ import fetchAlbum from "../services/api";
 import Pagination from "./Pagination/Pagination";
 import Loader from "../Loader/Loader";
 import { useEffect, useState } from "react";
+import Goback from "../Goback/Goback";
 
 const Albums = () => {
   const [dataAlbum, setDataAlbum] = useState([]);
@@ -38,6 +39,7 @@ const Albums = () => {
   return (
     <>
       {isLoad && <Loader size={50} wrapperClass="dna-wrapper" />}
+      <Goback />
       <ul>
         {albumsToRender().map(({ userId, id, title }) => (
           <li key={id}>
