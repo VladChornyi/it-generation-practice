@@ -2,22 +2,21 @@ import { Component } from "react";
 import PropTypes from "prop-types";
 import ProductForm from "./ProductForm";
 import ProductsList from "./ProductsList";
+import { useState } from "react";
+import Goback from "../Goback/Goback";
 
-export default class Products extends Component {
-  state = {
-    products: [],
-  };
+const Products = () => {
+  const [products, setProducts] = useState([]);
 
-  onSubmit = (newProduct) => {
-    this.setState((prevState) => {
+  const onSubmit = (newProduct) => {
+    setProducts((prevState) => {
       if (
-        prevState.products.some((product) => {
+        prevState.some((product) => {
           return product.name === newProduct.name;
         })
       ) {
-        return prevState.products.map((product) => {
+        return prevState.map((product) => {
           if (product.name === newProduct.name) {
-            console.log(product, newProduct);
             product.quantity =
               Number(product.quantity) + Number(newProduct.quantity);
             product.price = newProduct.price;
@@ -27,16 +26,17 @@ export default class Products extends Component {
         });
       }
 
-      return { products: [...prevState.products, newProduct] };
+      return { products: [...prevState, newProduct] };
     });
   };
 
-  render() {
-    return (
-      <div>
-        <ProductForm onSubmit={this.onSubmit} />
-        <ProductsList products={this.state.products} />
-      </div>
-    );
-  }
-}
+  return (
+    <div>
+      <ProductForm onSubmit={onSubmit} />
+      <ProductsList products={products} />
+      <Goback />
+    </div>
+  );
+};
+
+export default Products;

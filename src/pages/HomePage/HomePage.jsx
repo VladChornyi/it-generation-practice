@@ -1,7 +1,7 @@
 // import React, { useEffect } from "react";
 // import { useState } from "react";
 
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useSearchParams, useLocation } from "react-router-dom";
 
 const tasks = [
   {
@@ -33,6 +33,8 @@ const tasks = [
 export default function HomePage() {
   const [params, setParams] = useSearchParams();
 
+  const location = useLocation();
+
   const taskName = params.get("search") ?? "";
 
   const filteredTasks = tasks.filter((task) =>
@@ -56,8 +58,10 @@ export default function HomePage() {
       {filteredTasks.length > 0 && (
         <ul>
           {filteredTasks.map((task) => (
-            <li>
-              <Link to={`exercises/${task.link}`}>{task.name}</Link>
+            <li key={task.name}>
+              <Link to={`exercises/${task.link}`} state={{ from: location }}>
+                {task.name}
+              </Link>
             </li>
           ))}
         </ul>
