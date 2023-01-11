@@ -25,6 +25,9 @@ export default function ExercisesPage() {
           <li>
             <NavLink to="FAQ">FAQ</NavLink>
           </li>
+          <li>
+            <NavLink to="counter">Counter</NavLink>
+          </li>
         </ul>
       </nav>
       <Section>
