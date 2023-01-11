@@ -15,6 +15,7 @@ import { Route, Routes } from "react-router-dom";
 import HomePage from "../pages/HomePage/HomePage";
 import Layout from "./Layout/Layout";
 import ExercisesPage from "../pages/ExercisesPage/ExercisesPage";
+import Counter from "./Counter/Counter";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
             <Route path="starWars" element={<StarWars />} />
             <Route path="goodsList" element={<GoodsList goods={goods} />} />
             <Route path="FAQ" element={<FAQ />} />
+            <Route path="counter" element={<Counter />} />
           </Route>
         </Route>
       </Routes>
