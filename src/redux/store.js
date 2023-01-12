@@ -1,11 +1,9 @@
-import { createStore } from "redux";
-import { decrementAction, incrementAction } from "./actions";
-import { decrement, increment } from "./actionTypes";
-import { reducer } from "./reducer";
+import counterReducer from "./reducer";
 
+import { configureStore } from "@reduxjs/toolkit";
 
-export const store = createStore(reducer, { counter: 0, text: 'abcd' });
-console.log(store)
-
-
-
+export const store = configureStore({
+  reducer: {
+    counter: counterReducer,
+  },
+});
