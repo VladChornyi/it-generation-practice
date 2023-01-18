@@ -1,11 +1,8 @@
-import { createStore } from "redux";
-import { decrementAction, incrementAction } from "./actions";
-import { decrement, increment } from "./actionTypes";
-import { reducer } from "./reducer";
+import { configureStore } from "@reduxjs/toolkit";
+import usersReducer from "./users/usersSlice";
 
-
-export const store = createStore(reducer, { counter: 0, text: 'abcd' });
-console.log(store)
-
-
-
+export const store = configureStore({
+  reducer: {
+    users: usersReducer,
+  },
+});
