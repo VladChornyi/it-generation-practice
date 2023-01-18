@@ -1,25 +1,41 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchUsersOperation } from "./operetions";
+import { deleteUser, fetchUsersOperation } from "./operetions";
+
+const pending = (state) => {
+  state.isLoading = true;
+};
+
+const fulfilled = (state, action) => {
+  state.isLoading = false;
+  state.error = null;
+  state.items = action.payload;
+};
+
+const rejected = (state, action) => {
+  state.isLoading = false;
+  state.error = action.payload;
+};
 
 const usersSlice = createSlice({
   name: "users",
   initialState: { items: [], isLoading: false, error: null },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchUsersOperation.pending, (state, action) => {
-        state.isLoading = true;
-      })
-      .addCase(fetchUsersOperation.fulfilled, (state, action) => {
+      .addCase(fetchUsersOperation.pending, pending)
+      .addCase(fetchUsersOperation.fulfilled, fulfilled)
+      .addCase(fetchUsersOperation.rejected, rejected)
+
+      .addCase(deleteUser.pending, pending)
+      .addCase(deleteUser.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.items = action.payload;
+        state.items = state.items.filter(
+          (item) => item.id !== action.payload.id
+        );
       })
-      .addCase(fetchUsersOperation.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.payload;
-      });
+      .addCase(deleteUser.rejected, rejected);
   },
 });
-const { actions, reducer } = usersSlice;
+const { reducer } = usersSlice;
 
 export default reducer;
