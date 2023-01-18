@@ -16,6 +16,7 @@ import HomePage from "../pages/HomePage/HomePage";
 import Layout from "./Layout/Layout";
 import ExercisesPage from "../pages/ExercisesPage/ExercisesPage";
 import Counter from "./Counter/Counter";
+import UserPage from "../pages/UserPage/UserPage";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
             <Route path="goodsList" element={<GoodsList goods={goods} />} />
             <Route path="FAQ" element={<FAQ />} />
             <Route path="counter" element={<Counter />} />
+            <Route path="users" element={<UserPage />} />
           </Route>
         </Route>
       </Routes>
