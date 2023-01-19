@@ -5,6 +5,7 @@ const initialState = {
 	isLoading: false,
 	error: null,
 	data: {},
+	
 };
 
 const singleUserSlice = createSlice({
