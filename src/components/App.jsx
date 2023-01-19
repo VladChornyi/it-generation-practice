@@ -17,28 +17,36 @@ import Layout from "./Layout/Layout";
 import ExercisesPage from "../pages/ExercisesPage/ExercisesPage";
 import Counter from "./Counter/Counter";
 import UserPage from "../pages/UserPage/UserPage";
+import SingleUser from "../pages/SingleUser/SingleUser";
 
 function App() {
-  return (
-    <>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<HomePage />} />
-          <Route path="/exercises" element={<ExercisesPage />}>
-            <Route index element={<PostList posts={postsData} />} />
-            <Route path="posts" element={<PostList posts={postsData} />} />
-            <Route path="products" element={<Products />} />
-            <Route path="albums" element={<Albums />} />
-            <Route path="starWars" element={<StarWars />} />
-            <Route path="goodsList" element={<GoodsList goods={goods} />} />
-            <Route path="FAQ" element={<FAQ />} />
-            <Route path="counter" element={<Counter />} />
-            <Route path="users" element={<UserPage />} />
-          </Route>
-        </Route>
-      </Routes>
-    </>
-  );
+	return (
+		<>
+			<Routes>
+				<Route path="/" element={<Layout />}>
+					<Route index element={<HomePage />} />
+					<Route path="/exercises" element={<ExercisesPage />}>
+						<Route index element={<PostList posts={postsData} />} />
+						<Route
+							path="posts"
+							element={<PostList posts={postsData} />}
+						/>
+						<Route path="products" element={<Products />} />
+						<Route path="albums" element={<Albums />} />
+						<Route path="starWars" element={<StarWars />} />
+						<Route
+							path="goodsList"
+							element={<GoodsList goods={goods} />}
+						/>
+						<Route path="FAQ" element={<FAQ />} />
+						<Route path="counter" element={<Counter />} />
+						<Route path="users" element={<UserPage />} />
+						<Route path="users/:id" element={<SingleUser />} />
+					</Route>
+				</Route>
+			</Routes>
+		</>
+	);
 }
 
 export default App;
